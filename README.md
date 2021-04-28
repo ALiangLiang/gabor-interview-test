@@ -1,6 +1,16 @@
 # Gabor Take home 試題
 
-## 初始化資料庫
+## 執行
+
+環境：Node.js 14、Ubuntu 18.04
+
+### 建立環境
+
+```sh
+npm install
+```
+
+### 初始化資料庫
 
 ```sh
 NODE_ENV=development DEBUG=gabor-interview-test2:* \
@@ -9,7 +19,7 @@ NODE_ENV=development DEBUG=gabor-interview-test2:* \
   npx sequelize-cli db:seed:all
 ```
 
-## 啟動
+### 啟動
 
 ```sh
 NODE_ENV=development DEBUG=gabor-interview-test2:* \
@@ -18,10 +28,12 @@ NODE_ENV=development DEBUG=gabor-interview-test2:* \
 
 ## 頁面
 
+```
 GET / 首頁，使用者列表
 GET /profile 個人檔案
 GET /account/login 登入
 GET /account/regist 註冊
+```
 
 ## 網站安全機制與說明
 
@@ -45,7 +57,7 @@ GET /account/regist 註冊
 當使用者以該 session 請求 CSRF token 時，會以該 secret 來建立屬於他的 token，在使用者做資料的 Request 時，
 夾帶它變可讓伺服器可以辨識。
 
-# Cookie / Session
+### Cookie / Session
 
 Cookie 一個安全隱憂就是沒有設定好 domain 與 path，倘若今天有許多網站共用一個網域，A 網站未設定好 Cookie 
 的 path，這樣就會導致同網域底下不同 path 的網站可以存取到它，並以它盜取 A 網站的使用者身分。
