@@ -30,7 +30,6 @@ router.get('/regist', function (req, res, next) {
 })
 
 router.post('/regist', async function (req, res, next) {
-  // 只篩出我們要的
   const userData = pick(req.body, [
     'username',
     'password',
@@ -45,15 +44,18 @@ router.post('/regist', async function (req, res, next) {
     })
   }
 
-  const user = await User.create({
-    username: userData.username,
-    password: userData.password,
-    email: userData.email,
-    nickname: userData.nickname
-  })
-
-  req.session.userId = user.id
-  res.redirect('/')
+  try {
+    const user = await User.create({
+      username: userData.username,
+      password: userData.password,
+      email: userData.email,
+      nickname: userData.nickname
+    })
+    req.session.userId = user.id
+    res.redirect('/')
+  } catch (err) {
+    res.status(400).send()
+  }
 })
 
 module.exports = router
