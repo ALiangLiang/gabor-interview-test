@@ -44,10 +44,6 @@ app.use(session({
   })
 }))
 app.use(cookieParser())
-app.use(function (req, res, next) {
-  console.log(req.body)
-  next()
-})
 app.use(csrf({ cookie: false }))
 app.use(helmet({
   contentSecurityPolicy: {

@@ -53,7 +53,6 @@ router.get('/profile', needLogin, async function (req, res, next) {
     }
 
     await watched.addWatcher(watcher)
-    console.log(watched.toJSON())
   } else {
     watched = await User.findOne({
       where: {

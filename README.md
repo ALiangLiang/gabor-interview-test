@@ -10,7 +10,7 @@
 npm install
 ```
 
-### 初始化資料庫
+### 初始化資料庫（可選）
 
 ```sh
 NODE_ENV=development DEBUG=gabor-interview-test2:* \

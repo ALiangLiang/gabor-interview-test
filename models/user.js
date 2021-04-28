@@ -58,7 +58,6 @@ module.exports = (sequelize, DataTypes) => {
     hooks: {
       beforeCreate (user, options) {
         user.password = (user.password && user.password !== '') ? bcrypt.hashSync(user.password, 10) : null
-        console.log(user.password)
       }
     }
   })
